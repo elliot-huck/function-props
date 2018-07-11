@@ -7,9 +7,9 @@ export default class AnimalList extends Component {
       <React.Fragment>
         <h2>Animals</h2>
         {
-          this.props.animals.map(animal =>
+          this.props.animalOwners.map(connection =>
             <div>
-              {animal.name}
+              "{(this.props.animals[connection.animalId - 1]).name}" (owner: {(this.props.owners[connection.ownerId - 1]).name})
             </div>
           )
         }
