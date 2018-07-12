@@ -6,13 +6,13 @@ export default class LocationList extends Component {
     return (
       <React.Fragment>
         <h2>Locations</h2>
-        {
+        {/* {
           this.props.locations.map(location =>
             <div>
               {location.name}
             </div>
           )
-        }
+        } */}
       </React.Fragment>
     )
   }
