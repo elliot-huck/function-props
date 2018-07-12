@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ListItems from "./ListItems"
 
 
 export default class AnimalList extends Component {
@@ -30,20 +31,23 @@ export default class AnimalList extends Component {
     ]
   }
 
+
+
   render() {
+    const animalAndOwner = 5;
     return (
       <React.Fragment>
         <h2>Animals</h2>
         <ul>
-        {
-          this.state.animalOwners.map(connection =>
-            <li key={connection.connectionId.toString()}>
-              "{(this.state.animals[connection.animalId - 1]).name}" (owner: {(this.state.owners[connection.ownerId - 1]).name})
-            </li>
-          )
-        }
+          {
+            this.state.animals.map(animal =>
+              <ListItems key={animal.id.toString()} listItem={animal} />
+            )
+          }
         </ul>
       </React.Fragment>
     )
   }
 }
+
+  // "{(this.state.animals[connection.animalId - 1]).name}"(owner: { (this.state.owners[connection.ownerId - 1]).name})

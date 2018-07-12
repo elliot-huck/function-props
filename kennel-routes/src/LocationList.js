@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ListItems from "./ListItems"
 
 
 export default class LocationList extends Component {
@@ -15,11 +16,11 @@ export default class LocationList extends Component {
       <React.Fragment>
         <h2>Locations</h2>
         <ul>
-        {
-          this.state.locations.map(location =>
-            <li key={location.id.toString()}>{location.name}</li>
-          )
-        }
+          {
+            this.state.locations.map(location =>
+              <ListItems key={location.id.toString()} listItem={location} />
+            )
+          }
         </ul>
       </React.Fragment>
     )
