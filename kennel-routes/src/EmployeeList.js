@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import ListItems from './ListItems';
 
 
 export default class EmployeeList extends Component {
 
   state = {
     employees: [
-      { id: 1, employeeName: "Jessica Younker" },
-      { id: 2, employeeName: "Jordan Nelson" },
-      { id: 3, employeeName: "Zoe LeBlanc" },
-      { id: 4, employeeName: "Blaise Roberts" }
+      { id: 1, name: "Jessica Younker" },
+      { id: 2, name: "Jordan Nelson" },
+      { id: 3, name: "Zoe LeBlanc" },
+      { id: 4, name: "Blaise Roberts" }
     ]
   }
 
@@ -19,7 +20,7 @@ export default class EmployeeList extends Component {
         <ul>
         {
           this.state.employees.map(employee =>
-            <li key={employee.id.toString()}>{employee.employeeName}</li>
+            <ListItems key={employee.id.toString()} listItem={employee} />
           )
         }
         </ul>
