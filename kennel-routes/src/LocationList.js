@@ -5,8 +5,8 @@ export default class LocationList extends Component {
 
   state = {
     locations: [
-      { id: 1, locationName: "Nashville North" },
-      { id: 2, locationName: "Nashville South" }
+      { id: 1, name: "Nashville North" },
+      { id: 2, name: "Nashville South" }
     ]
   }
 
@@ -17,7 +17,7 @@ export default class LocationList extends Component {
         <ul>
         {
           this.state.locations.map(location =>
-            <li key={location.id.toString()}>{location.locationName}</li>
+            <li key={location.id.toString()}>{location.name}</li>
           )
         }
         </ul>

@@ -5,20 +5,20 @@ export default class AnimalList extends Component {
 
   state = {
     animals: [
-      { id: 1, animalName: "Doodles" },
-      { id: 2, animalName: "Jack" },
-      { id: 3, animalName: "Angus" },
-      { id: 4, animalName: "Henley" },
-      { id: 5, animalName: "Derkins" },
-      { id: 6, animalName: "Checkers" }
+      { id: 1, name: "Doodles" },
+      { id: 2, name: "Jack" },
+      { id: 3, name: "Angus" },
+      { id: 4, name: "Henley" },
+      { id: 5, name: "Derkins" },
+      { id: 6, name: "Checkers" }
     ],
     owners: [
-      { id: 1, ownerName: "Ryan Tanay" },
-      { id: 2, ownerName: "Emma Beaton" },
-      { id: 3, ownerName: "Dani Adkins" },
-      { id: 4, ownerName: "Adam Oswalt" },
-      { id: 5, ownerName: "Fletcher Bangs" },
-      { id: 6, ownerName: "Angela Lee" }
+      { id: 1, name: "Ryan Tanay" },
+      { id: 2, name: "Emma Beaton" },
+      { id: 3, name: "Dani Adkins" },
+      { id: 4, name: "Adam Oswalt" },
+      { id: 5, name: "Fletcher Bangs" },
+      { id: 6, name: "Angela Lee" }
     ],
     animalOwners: [
       { connectionId: 1, ownerId: 1, animalId: 2 },
@@ -38,7 +38,7 @@ export default class AnimalList extends Component {
         {
           this.state.animalOwners.map(connection =>
             <li key={connection.connectionId.toString()}>
-              "{(this.state.animals[connection.animalId - 1]).animalName}" (owner: {(this.state.owners[connection.ownerId - 1]).ownerName})
+              "{(this.state.animals[connection.animalId - 1]).name}" (owner: {(this.state.owners[connection.ownerId - 1]).name})
             </li>
           )
         }
