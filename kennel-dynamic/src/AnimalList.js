@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import ListItems from "./ListItems"
+import Animal from './Animal';
 
 
 export default class AnimalList extends Component {
 
   state = {
     animals: [
-      { id: 1, name: "Doodles" },
-      { id: 2, name: "Jack" },
-      { id: 3, name: "Angus" },
-      { id: 4, name: "Henley" },
-      { id: 5, name: "Derkins" },
-      { id: 6, name: "Checkers" }
+      { id: 1, name: "Doodles", breed: "German Shepherd" },
+      { id: 2, name: "Jack", breed: "Cocker Spaniel" },
+      { id: 3, name: "Angus", breed: "Dalmatian" },
+      { id: 4, name: "Henley", breed: "Carolina Retriever" },
+      { id: 5, name: "Derkins", breed: "Pug" },
+      { id: 6, name: "Checkers", breed: "Bulldog" }
     ],
     owners: [
       { id: 1, name: "Ryan Tanay" },
@@ -34,14 +34,13 @@ export default class AnimalList extends Component {
 
 
   render() {
-    const animalAndOwner = 5;
     return (
       <React.Fragment>
         <h2>Animals</h2>
         <ul>
           {
             this.state.animals.map(animal =>
-              <ListItems key={animal.id.toString()} listItem={animal} />
+              <Animal key={animal.id.toString()} animal={animal} />
             )
           }
         </ul>
