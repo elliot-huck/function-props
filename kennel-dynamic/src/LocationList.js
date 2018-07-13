@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ListItems from "./ListItems"
+import Location from "./Location"
 
 
 export default class LocationList extends Component {
@@ -18,7 +18,7 @@ export default class LocationList extends Component {
         <ul>
           {
             this.state.locations.map(location =>
-              <ListItems key={location.id.toString()} listItem={location} />
+              <Location key={location.id.toString()} location={location} />
             )
           }
         </ul>

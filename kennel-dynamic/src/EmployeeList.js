@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ListItems from './ListItems';
+import Employee from './Employee';
 
 
 export default class EmployeeList extends Component {
@@ -20,7 +20,7 @@ export default class EmployeeList extends Component {
         <ul>
         {
           this.state.employees.map(employee =>
-            <ListItems key={employee.id.toString()} listItem={employee} />
+            <Employee key={employee.id.toString()} employee={employee} />
           )
         }
         </ul>
