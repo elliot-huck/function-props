@@ -1,18 +1,38 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
+
 import AnimalList from './AnimalList'
 import Animal from './Animal'
+
 import LocationList from './LocationList'
 import Location from './Location'
+
 import EmployeeList from './EmployeeList'
 import Employee from './Employee'
 
+import Login from './Login'
+
 
 export default class ApplicationViews extends Component {
+
+	// Check if credentials are in local storage
+	isAuthenticated = () => localStorage.getItem("credentials") !== null
+
 	render() {
 		return (
 			<React.Fragment>
-				<Route exact path="/" component={LocationList} />
+				<Route path="/login" component={Login} />
+
+				<Route exact path="/"
+					render={
+						(props) => {
+							if (this.isAuthenticated()) {
+								return <LocationList />
+							} else {
+								return <Login />
+							}
+						}
+					} />
 				<Route path="/locations/:locationId"
 					render={
 						(props) => {
@@ -20,6 +40,7 @@ export default class ApplicationViews extends Component {
 						}
 					}
 				/>
+
 				<Route exact path="/animals" component={AnimalList} />
 				<Route path="/animals/:animalId"
 					render={
@@ -28,6 +49,7 @@ export default class ApplicationViews extends Component {
 						}
 					}
 				/>
+
 				<Route exact path="/employees" component={EmployeeList} />
 				<Route path="/employees/:employeeId"
 					render={
