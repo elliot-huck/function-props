@@ -16,7 +16,13 @@ import Login from './Login'
 export default class ApplicationViews extends Component {
 
 	// Check if credentials are in local storage
-	isAuthenticated = () => localStorage.getItem("credentials") !== null
+	isAuthenticated = () => {
+		return (
+			(localStorage.getItem("credentials") !== null)
+			||
+			(sessionStorage.getItem("credentials") !== null)
+		)
+	}
 
 	render() {
 		return (
@@ -41,7 +47,16 @@ export default class ApplicationViews extends Component {
 					}
 				/>
 
-				<Route exact path="/animals" component={AnimalList} />
+				<Route exact path="/animals"
+					render={
+						(props) => {
+							if (this.isAuthenticated()) {
+								return <AnimalList />
+							} else {
+								return <Login />
+							}
+						}
+					} />
 				<Route path="/animals/:animalId"
 					render={
 						(props) => {
@@ -50,7 +65,16 @@ export default class ApplicationViews extends Component {
 					}
 				/>
 
-				<Route exact path="/employees" component={EmployeeList} />
+				<Route exact path="/employees"
+					render={
+						(props) => {
+							if (this.isAuthenticated()) {
+								return <EmployeeList />
+							} else {
+								return <Login />
+							}
+						}
+					} />
 				<Route path="/employees/:employeeId"
 					render={
 						(props) => {
