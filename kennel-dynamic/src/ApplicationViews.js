@@ -5,6 +5,7 @@ import Animal from './Animal'
 import LocationList from './LocationList'
 import Location from './Location'
 import EmployeeList from './EmployeeList'
+import Employee from './Employee'
 
 
 export default class ApplicationViews extends Component {
@@ -27,7 +28,14 @@ export default class ApplicationViews extends Component {
 						}
 					}
 				/>
-				<Route path="/employees" component={EmployeeList} />
+				<Route exact path="/employees" component={EmployeeList} />
+				<Route path="/employees/:employeeId"
+					render={
+						(props) => {
+							return <Employee worker={props.location.state.teammate} />
+						}
+					}
+				/>
 			</React.Fragment>
 		)
 	}
