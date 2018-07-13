@@ -39,8 +39,8 @@ export default class AnimalList extends Component {
         <h2>Animals</h2>
         <ul>
           {
-            this.state.animals.map(animal =>
-              <Animal key={animal.id.toString()} animal={animal} />
+            this.state.animals.map(creature =>
+              <Animal key={creature.id.toString()} pet={creature} />
             )
           }
         </ul>
