@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Animal from './Animal';
+import ApiController from './ApiController';
 
 
 export default class AnimalList extends Component {
@@ -8,11 +9,10 @@ export default class AnimalList extends Component {
     animals: []
   }
 
-  componentDidMount () {
-    fetch("http://localhost:5050/animals")
-    .then(e => e.json())
-    .then(allAnimals => this.setState({ animals: allAnimals }))
-}
+  componentDidMount() {
+    ApiController.getAll("animals")
+      .then(allAnimals => this.setState({ animals: allAnimals }))
+  }
 
   render() {
     return (
