@@ -8,11 +8,11 @@ export default class EmployeeList extends Component {
     employees: []
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetch("http://localhost:5050/employees")
-    .then(e => e.json())
-    .then(allEmployees => this.setState({ employees: allEmployees }))
-}
+      .then(e => e.json())
+      .then(allEmployees => this.setState({ employees: allEmployees }))
+  }
 
   render() {
     return (

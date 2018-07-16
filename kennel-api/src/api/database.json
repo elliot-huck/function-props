@@ -21,7 +21,6 @@
       "title": "Chief Animal Resources Officer"
     }
   ],
-
   "animals": [
     {
       "id": 1,
@@ -52,6 +51,18 @@
       "id": 6,
       "name": "Checkers",
       "breed": "Bulldog"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "400 Pet Blvd"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "5533 Kennel St"
     }
   ]
 }
