@@ -5,10 +5,13 @@ import Location from "./Location"
 export default class LocationList extends Component {
 
   state = {
-    locations: [
-      { id: 1, name: "Nashville North", address: "400 Pet Blvd" },
-      { id: 2, name: "Nashville South", address: "5533 Kennel St" }
-    ]
+    locations: []
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:5050/locations")
+      .then(e => e.json())
+      .then(allLocations => this.setState({ locations: allLocations }))
   }
 
   render() {
