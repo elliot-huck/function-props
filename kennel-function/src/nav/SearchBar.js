@@ -12,7 +12,7 @@ export default class SearchBar extends Component {
       .then(matchedEmployees => {
         matchedEmployees.forEach(element => {
           console.log(element)
-          
+
         });
       })
   }
@@ -21,7 +21,8 @@ export default class SearchBar extends Component {
     return (
       <input type="text"
         placeholder="Search"
-        onChange={this.dynamicSearch} />
+        // onChange={this.dynamicSearch}
+      />
     )
   }
 }
