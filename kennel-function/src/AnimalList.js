@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Animal from './Animal';
 import ApiController from './ApiController';
+import AnimalForm from './AnimalForm';
 
 
 export default class AnimalList extends Component {
@@ -28,6 +29,25 @@ export default class AnimalList extends Component {
       })
   }
 
+  checkInAnimal = (newAnimal) => {
+    fetch(`http://localhost:5050/animals/`, {
+      method: "POST",
+      body: newAnimal.json()
+    })
+      // When animal is added, fetch all the animals
+      .then(() => {
+        // Remember you HAVE TO return this fetch to the subsequenet `then()`
+        return fetch("http://localhost:5050/animals")
+      })
+      // Once the new array of animals is retrieved, set the state
+      .then(a => a.json())
+      .then(animalList => {
+        this.setState({
+          animals: animalList
+        })
+      })
+  }
+
   componentDidMount() {
     ApiController.getAll("animals")
       .then(allAnimals => this.setState({ animals: allAnimals }))
@@ -37,6 +57,7 @@ export default class AnimalList extends Component {
     return (
       <React.Fragment>
         <h2>Animals</h2>
+        <AnimalForm checkInAnimal={this.checkInAnimal} />
         <ul>
           {
             this.state.animals.map(creature =>
