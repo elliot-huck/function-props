@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Employee from './Employee';
+import ApiController from './ApiController';
 
 
 export default class EmployeeList extends Component {
@@ -9,8 +10,7 @@ export default class EmployeeList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5050/employees")
-      .then(e => e.json())
+    ApiController.getAll("employees")
       .then(allEmployees => this.setState({ employees: allEmployees }))
   }
 

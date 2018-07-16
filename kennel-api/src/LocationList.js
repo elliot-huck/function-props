@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Location from "./Location"
+import ApiController from './ApiController';
 
 
 export default class LocationList extends Component {
@@ -9,8 +10,7 @@ export default class LocationList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5050/locations")
-      .then(e => e.json())
+    ApiController.getAll("locations")
       .then(allLocations => this.setState({ locations: allLocations }))
   }
 
