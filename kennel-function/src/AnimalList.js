@@ -9,6 +9,25 @@ export default class AnimalList extends Component {
     animals: []
   }
 
+  checkOutAnimal = (animalId) => {
+    // Delete the specified animal from the API
+    fetch(`http://localhost:5050/animals/${animalId}`, {
+      method: "DELETE"
+    })
+      // When DELETE is finished, retrieve the new list of animals
+      .then(() => {
+        // Remember you HAVE TO return this fetch to the subsequenet `then()`
+        return fetch("http://localhost:5050/animals")
+      })
+      // Once the new array of animals is retrieved, set the state
+      .then(a => a.json())
+      .then(animalList => {
+        this.setState({
+          animals: animalList
+        })
+      })
+  }
+
   componentDidMount() {
     ApiController.getAll("animals")
       .then(allAnimals => this.setState({ animals: allAnimals }))
@@ -21,7 +40,11 @@ export default class AnimalList extends Component {
         <ul>
           {
             this.state.animals.map(creature =>
-              <Animal key={creature.id.toString()} pet={creature} />
+              <Animal
+                key={creature.id.toString()}
+                pet={creature}
+                checkOutAnimal={this.checkOutAnimal}
+              />
             )
           }
         </ul>

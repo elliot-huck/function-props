@@ -21,6 +21,7 @@ export default props => {
             Details
           </Link>
         }
+        <a href="#" onClick={() => props.checkOutAnimal(props.pet.id)}>Check Out</a>
       </div>
     </div>
   )

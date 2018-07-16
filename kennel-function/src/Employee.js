@@ -19,6 +19,7 @@ export default props => {
             Details
           </Link>
         }
+        <a href="" onClick={() => props.fire(props.worker.id)}>You're fired!</a>
       </div>
     </div>
   )
